@@ -1,15 +1,12 @@
 const canvas = document.getElementById("screen");
 const ctx = canvas.getContext("2d");
 
-// Ajustar canvas al tamaño real
 canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
-// Tamaños
 const radioVisual = 40;
 const radioColision = 28;
 
-// 📺 ÁREA DE LA PANTALLA DE BMO (AJUSTA ESTO)
 const pantalla = {
   x: -5,
   y: -5,
@@ -27,7 +24,6 @@ const imagenes = [
   "img/Solaris.png"
 ];
 
-// Comprobar colisión inicial
 function posicionValida(x, y) {
   for (let g of gatos) {
     const dx = g.x - x;
@@ -38,7 +34,6 @@ function posicionValida(x, y) {
   return true;
 }
 
-// Crear gatos DENTRO de la pantalla
 imagenes.forEach(src => {
   const img = new Image();
   img.src = src;
@@ -70,13 +65,11 @@ function animar() {
     gato.x += gato.dx;
     gato.y += gato.dy;
 
-    // Límites reales de la pantalla
     const left = pantalla.x + radioVisual;
     const right = pantalla.x + pantalla.width - radioVisual;
     const top = pantalla.y + radioVisual;
     const bottom = pantalla.y + pantalla.height - radioVisual;
 
-    // Rebotes contra la pantalla
     if (gato.x <= left) {
       gato.x = left;
       gato.dx *= -1;
@@ -94,7 +87,6 @@ function animar() {
       gato.dy *= -1;
     }
 
-    // Colisiones entre gatos
     for (let j = i + 1; j < gatos.length; j++) {
       const otro = gatos[j];
 
@@ -118,7 +110,6 @@ function animar() {
       }
     }
 
-    // Dibujar
     ctx.drawImage(
       gato.img,
       gato.x - radioVisual,
@@ -132,3 +123,4 @@ function animar() {
 }
 
 animar();
+
