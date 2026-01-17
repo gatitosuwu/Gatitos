@@ -14,11 +14,11 @@ body {
   background: url("img/bmo.png") no-repeat center/contain;
 }
 
-/* AJUSTA ESTO A LA PANTALLA NEGRA DE BMO */
 #screen {
   position: absolute;
   top: 50px;
   left: 20px;
   width: 550px;
   height: 750px;
+
 }
